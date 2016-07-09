@@ -24,15 +24,15 @@ O primeiro ponto a notar nos dados é o desequilíbrio entre as classes na vari�
 
 Além disso, a natureza do problema trazia um desafio para a modelagem: usuários do Kaggle reportaram exemplos iguais para ambas as classes. Não havia separação clara. Isso pode ser visualizado no gráfico a seguir, que mostra as duas dimensões mais importantes após a apliação de um PCA nos dados (detalhes [aqui](https://www.kaggle.com/inversion/santander-customer-satisfaction/pca-visualization/run/175633/output)):
 
-![](github.com/gdmarmerola)
+![](https://github.com/gdmarmerola/santander-satisfaction/blob/master/pca.png)
 
 Mesmo processo, mas utilizando [t-SNE](https://www.kaggle.com/cast42/santander-customer-satisfaction/t-sne-manifold-visualisation/output):
 
-![](github.com/gdmarmerola)
+![](https://github.com/gdmarmerola/santander-satisfaction/blob/master/tsne.png)
 
 Foram dados nomes pouco explicativos para as variáveis, mas ainda era possível ter bons palpites sobre o que cada uma representava. Poucas tinham poder preditivo, sendo a mais importante a "var15" que muito provavelmente representa a idade do cliente.
 
-![](github.com/gdmarmerola)
+![](https://github.com/gdmarmerola/santander-satisfaction/blob/master/var15.png)
 
 Dessa forma, modelos simples conseguiram atingir resultados bastante próximos aos melhores na leaderboard. Um [script simples](https://www.kaggle.com/zfturbo/santander-customer-satisfaction/to-the-top-v3/comments) chegou ao top 10% da leaderboard pública. A diferença entre o meu resultado final (0.826928) e o resultado do vencedor da competição (0.829072) é de  0.002144 em termos de AUC. Muitas vezes, diferenças dessa ordem no resultado podem ser obtidas somente trocando a seed do gerador de números aleatórios do modelo. Logo, o principal desafio era garantir que a submissão enviada era estável no conjunto de validação local, na leaderboard pública e na privada. 
 
@@ -48,7 +48,7 @@ Uma das "táticas" usadas por alguns Kagglers é criar modelos locais utilizando
 
 Porém, pela natureza ruidosa dos dados e pelo desequilíbrio da variável alvo, havia uma certa discrepância entre os dados da LB pública e privada. Em geral, aqueles que utilizaram a "tática" acima mencionada obtiveram uma surpresa ruim no resultado final. Alguns [fóruns](https://www.kaggle.com/c/santander-customer-satisfaction/forums/t/20535/it-s-time-to-play-the-lb-shake-up-prediction-game?page=2) trataram esse tema, e de uma maneira geral, o **shake-up** (diferença entre as colocações nas LB's pública e privada) foi  muito grande: a maior queda foi de 3.147 posições, enquanto o maior ganho foi de 2,580 posições. Minha submissão final subiu 470 posições, de 940 na LB pública para 470	na LB privada. 
 
-!["Obrigado pelo script". Indeed. ](github.com/gdmarmerola)
+!["Obrigado pelo script". Indeed.](https://github.com/gdmarmerola/santander-satisfaction/blob/master/shakeup.png)
 
 Isso mostra como ignorar a valiação local pode acarretar problemas em projetos que envolvam machine learning. Validar um modelo e ter confiança de que ele generaliza bem, é, sem dúvida, uma das maiores dificuldades da disciplina, mas também uma de suas maiores belezas. Nesse sentido, machine learning pode ser mesmo uma arte.
 
@@ -68,7 +68,7 @@ Em geral, diversas técnicas foram utilizadas, mas o principal objetivo foi **es
 
 Centenas de modelos foram construídos pelo `hyperopt`, e minha submissão final foi um ensemble (média simples) de 7 pipelines diferentes. Todo o processo pode ser encontrado no notebook `model-selection`. Abaixo reproduzo uma vizualização interessante do processo de otimização de hiperparâmetros usado.
 
-![](github.com/gdmarmerola)
+![](https://github.com/gdmarmerola/santander-satisfaction/blob/master/vis/hyperparameters/1st-round.png)
 
 ## 5. Conclusões
 
